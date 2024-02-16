@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tasks</title>
-</head>
-<body>
-    <h1>Add Task</h1>
-    <form>
-        <input type="text" name="task">
+{% extends "tasks/layout.html" %}
+
+{% block body %}
+<h1>Add Task</h1>
+    <form action="{% url 'tasks:add' %}" method="post">
+            {% csrf_token %}
+        <!-- <input type="text" name="task"> -->
+        {{ form }}
         <input type="submit">
     </form>
-</body>
-</html>
-
+    <a href="{% url 'tasks:index' %}">Home</a>
+{% endblock %}
